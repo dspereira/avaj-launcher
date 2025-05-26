@@ -11,23 +11,22 @@ public class Baloon extends Aircarft {
         type = "Baloon";
         weatherActions = new HashMap<>();
         weatherActions.put("SUN", () -> {
-            System.out.println("Sunny skies — perfect for a smooth float.");
             writeMessage("Sunny skies — perfect for a smooth float.");
             updateCoordinates(2, 0, 4);
         });
 
         weatherActions.put("RAIN", () -> {
-            System.out.println("Rain and hot air don’t mix well...");
+            writeMessage("Rain and hot air don’t mix well...");
             updateCoordinates(0, 0, -5);
         });
 
         weatherActions.put("FOG", () -> {
-            System.out.println("Can’t see a thing — hope we don’t hit a tree.");
+            writeMessage("Can’t see a thing — hope we don’t hit a tree.");
             updateCoordinates(0, 0, -3);
         });
 
         weatherActions.put("SNOW", () -> {
-            System.out.println("Snow’s piling up... we’re going down gently.");
+            writeMessage("Snow’s piling up... we’re going down gently.");
             updateCoordinates(0, 0, -15);
         });
     }
@@ -35,12 +34,13 @@ public class Baloon extends Aircarft {
     @Override
     public void updateConditions() {
         Runnable action = weatherActions.get(this.weatherTower.getWeather());
-    
+
         if (action != null)
             action.run();
-        if (this.coordinates.getHeight() == 0)
+        if (this.coordinates.getHeight() == 0) {
             this.landing();
-
+            unregister();
+        }
     }
 
     private void updateCoordinates(int longitudeOffset, int latitudeOffset, int heightOffset) {
@@ -60,6 +60,9 @@ public class Baloon extends Aircarft {
 
     private void landing() {
         writeMessage("Landing.");
+    }
+
+    private void unregister() {
         weatherTower.unregister();
     }
 }

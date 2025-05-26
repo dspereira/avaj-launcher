@@ -1,7 +1,7 @@
 public class WeatherTower extends Tower {
     
     public String getWeather(){
-        return "getWeather";
+        return "SNOW";
     }
 
     public void changeWeather() {

@@ -6,10 +6,11 @@ public class Main {
         System.out.println("Avaj Launcher");
 
 
-        ArrayList<Integer> numbers = new ArrayList<>();
+        /*ArrayList<Integer> numbers = new ArrayList<>();
         numbers.add(4);
         numbers.add(30);
         numbers.add(13);
+        */
 
         //System.out.println(numbers);
 
@@ -20,12 +21,20 @@ public class Main {
 
         //numbers.forEach(f -> System.out.println(f));
 
-        numbers.forEach((val) -> {
+        /*numbers.forEach((val) -> {
             System.out.println("valor: " + val);
-        });
+        });*/
 
-        Tower t = new Tower();
-        t.register();
+
+        WeatherTower weatherTower = new WeatherTower();
+
+        Baloon baloon = new Baloon(0, "firstBaloon", new Coordinates(20, 30, 40));
+
+        baloon.registerTower(weatherTower);
+
+        baloon.updateConditions();
+
+
 
     }
 }
