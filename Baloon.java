@@ -5,6 +5,7 @@ public class Baloon extends Aircarft {
     private HashMap<String, Runnable> weatherActions;
     private String type;
 
+
     public Baloon(long id, String name, Coordinates coordinates) {
         super(id, name, coordinates);
         
@@ -43,6 +44,10 @@ public class Baloon extends Aircarft {
         }
     }
 
+    public String getIdentification() {
+        return type + "#" + name + "(" + id + ")";
+    }
+
     private void updateCoordinates(int longitudeOffset, int latitudeOffset, int heightOffset) {
         this.coordinates.updateLongitude(longitudeOffset);
         this.coordinates.updateLatitude(latitudeOffset);
@@ -54,15 +59,11 @@ public class Baloon extends Aircarft {
         System.out.println(msg);
     }
 
-    private String getIdentification() {
-        return type + "#" + name + "(" + id + ")";
-    }
-
     private void landing() {
         writeMessage("Landing.");
     }
 
     private void unregister() {
-        weatherTower.unregister();
+        weatherTower.unregister(this);
     }
 }
