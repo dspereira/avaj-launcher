@@ -34,7 +34,7 @@ public class Baloon extends Aircarft {
 
     @Override
     public void updateConditions() {
-        Runnable action = weatherActions.get(this.weatherTower.getWeather());
+        Runnable action = weatherActions.get(this.weatherTower.getWeather(this.coordinates));
 
         if (action != null)
             action.run();
