@@ -1,10 +1,7 @@
 import java.util.HashMap;
 
 public class Baloon extends Aircarft {
-    
-    private HashMap<String, Runnable> weatherActions;
-    private String type;
-
+    private HashMap<String, Action> weatherActions;
 
     public Baloon(long id, String name, Coordinates coordinates) {
         super(id, name, coordinates);
@@ -34,36 +31,21 @@ public class Baloon extends Aircarft {
 
     @Override
     public void updateConditions() {
-        Runnable action = weatherActions.get(this.weatherTower.getWeather(this.coordinates));
+        if (this.weatherTower == null)
+            return ;
+        
+        Action action = weatherActions.get(this.weatherTower.getWeather(this.coordinates));
 
         if (action != null)
-            action.run();
+            action.execute();
         if (this.coordinates.getHeight() == 0) {
             this.landing();
             unregister();
         }
     }
 
-    public String getIdentification() {
-        return type + "#" + name + "(" + id + ")";
-    }
-
-    private void updateCoordinates(int longitudeOffset, int latitudeOffset, int heightOffset) {
-        this.coordinates.updateLongitude(longitudeOffset);
-        this.coordinates.updateLatitude(latitudeOffset);
-        this.coordinates.updateHeight(heightOffset);
-    }
-
-    private void writeMessage(String message) {
-        String msg = getIdentification() + ": " + message;
-        System.out.println(msg);
-    }
-
-    private void landing() {
-        writeMessage("Landing.");
-    }
-
-    private void unregister() {
-        weatherTower.unregister(this);
-    }
+    @FunctionalInterface
+    private interface Action {
+        void execute();
+    }   
 }
