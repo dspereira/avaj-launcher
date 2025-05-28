@@ -1,7 +1,15 @@
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class Main {
     public static void main(String[] args) {
 
+        Simulation simulation = new Simulation();
+        simulation.setup("scenario.txt");
+        simulation.start();
 
+        /*
         WeatherTower weatherTower = new WeatherTower();
 
         AircraftFactory aFactory = AircraftFactory.getInstance();
@@ -17,7 +25,7 @@ public class Main {
         Flyable helicopter = aFactory.newAircraft("Helicopter", "hel", new Coordinates(20, 30, 20));
         helicopter.registerTower(weatherTower);
         weatherTower.register(helicopter);
-
+        */
 
         /* 
         Baloon baloon = new Baloon(0, "firstBaloon", new Coordinates(20, 30, 20));
@@ -33,7 +41,11 @@ public class Main {
         */
 
 
-        for (int i=0; i < 100; i++)
-            weatherTower.changeWeather();
+        //for (int i=0; i < 100; i++)
+        //    weatherTower.changeWeather();
+
+
+        //InputStreamReader in = new InputStreamReader();
+        //BufferedReader bf = new BufferedReader();
     }
 }

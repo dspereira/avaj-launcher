@@ -12,14 +12,13 @@ public class AircraftFactory {
     }
 
     public Flyable newAircraft(String type, String name, Coordinates coordinates) {
-
-        Flyable flyable = null;
-
-        if (type == "Helicopter")
+        Flyable flyable;
+    
+        if (type.equals("Helicopter"))
             flyable = new Helicopter(++id, name, coordinates);
-        else if (type == "Baloon")
+        else if (type.equals("Baloon"))
             flyable = new Baloon(++id, name, coordinates);
-        else if (type == "JetPlane")
+        else if (type.equals("JetPlane"))
             flyable = new JetPlane(++id, name, coordinates);
         else
             flyable = null;

@@ -5,7 +5,7 @@ public class Baloon extends Aircarft {
 
     public Baloon(long id, String name, Coordinates coordinates) {
         super(id, name, coordinates);
-        
+
         type = "Baloon";
         weatherActions = new HashMap<>();
         weatherActions.put("SUN", () -> {
