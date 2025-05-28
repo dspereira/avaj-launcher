@@ -26,7 +26,8 @@ public class Aircarft extends Flyable{
 
     protected void writeMessage(String message) {
         String msg = getIdentification() + ": " + message;
-        System.out.println(msg);
+        //System.out.println(msg);
+        Logger.log(msg);
     }
 
     protected void landing() {

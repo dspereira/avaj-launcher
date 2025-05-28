@@ -9,22 +9,22 @@ public class Baloon extends Aircarft {
         type = "Baloon";
         weatherActions = new HashMap<>();
         weatherActions.put("SUN", () -> {
-            writeMessage("Sunny skies — perfect for a smooth float.");
+            writeMessage("Sunny skies - perfect for a smooth float.");
             updateCoordinates(2, 0, 4);
         });
 
         weatherActions.put("RAIN", () -> {
-            writeMessage("Rain and hot air don’t mix well...");
+            writeMessage("Rain and hot air do not mix well...");
             updateCoordinates(0, 0, -5);
         });
 
         weatherActions.put("FOG", () -> {
-            writeMessage("Can’t see a thing — hope we don’t hit a tree.");
+            writeMessage("Can not see a thing - hope we do not hit a tree.");
             updateCoordinates(0, 0, -3);
         });
 
         weatherActions.put("SNOW", () -> {
-            writeMessage("Snow’s piling up... we’re going down gently.");
+            writeMessage("Snow is piling up... we are going down gently.");
             updateCoordinates(0, 0, -15);
         });
     }

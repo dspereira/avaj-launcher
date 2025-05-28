@@ -9,7 +9,7 @@ public class Helicopter extends Aircarft{
         type = "Helicopter";
         weatherActions = new HashMap<>();
         weatherActions.put("SUN", () -> {
-            writeMessage("Sun’s out, time to flex these rotors!");
+            writeMessage("Sun is out, time to flex these rotors!");
             updateCoordinates(10, 0, 2);
         });
 
@@ -24,7 +24,7 @@ public class Helicopter extends Aircarft{
         });
 
         weatherActions.put("SNOW", () -> {
-            writeMessage("Snow way we’re flying in this.");
+            writeMessage("Snow way we are flying in this.");
             updateCoordinates(0, 0, -12);
         });
     }

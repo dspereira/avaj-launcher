@@ -7,14 +7,13 @@ class Tower {
 
     public void register(Flyable flyable) {
         observers.add(flyable);
-        System.out.println("Tower says: " + ((Aircarft) flyable).getIdentification() + " registered to weather tower."); // Put getIdentification in the Flyable like an abstract
-
+        Logger.log("Tower says: " + ((Aircarft) flyable).getIdentification() + " registered to weather tower.");
     }
 
     public void unregister(Flyable flyable) {
         //observers.remove(flyable);
         toRemove.add(flyable);
-        System.out.println("Tower says: " + ((Aircarft) flyable).getIdentification() + " unregistered from weather tower."); // Put getIdentification in the Flyable like an abstract
+        Logger.log("Tower says: " + ((Aircarft) flyable).getIdentification() + " unregistered from weather tower.");
     }
 
     protected void conditionChanged() {

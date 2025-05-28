@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -49,7 +48,6 @@ public class Simulation {
             tower.changeWeather();
     }
 
-
     private Flyable getNewAircraft(String line) throws InvalidAircraftFormatException {
         String[] words = line.split("\\s+");
         int longitude;
@@ -58,10 +56,10 @@ public class Simulation {
 
         if (words.length != 5)
             throw new InvalidAircraftFormatException("Invalid parameters for creating an aircraft. Expected format: <type> <name> <longitude> <latitude> <height>.");
-        
+    
         if (!words[0].equals("Baloon") && !words[0].equals("Helicopter") && !words[0].equals("JetPlane"))
             throw new InvalidAircraftFormatException("Unknown aircraft type. Expected one of: Baloon, JetPlane, Helicopter.");
-        
+    
         try {
             longitude = Integer.parseInt(words[2]);
             latitude = Integer.parseInt(words[3]);

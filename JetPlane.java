@@ -9,22 +9,22 @@ public class JetPlane extends Aircarft {
         type = "JetPlane";
         weatherActions = new HashMap<>();
         weatherActions.put("SUN", () -> {
-            writeMessage("Clear skies — time to break the sound barrier.");
+            writeMessage("Clear skies - time to break the sound barrier.");
             updateCoordinates(0, 10, 2);
         });
 
         weatherActions.put("RAIN", () -> {
-            writeMessage("Rain ahead — activating anti-icing systems.");
+            writeMessage("Rain ahead - activating anti-icing systems.");
             updateCoordinates(0, 5, 0);
         });
 
         weatherActions.put("FOG", () -> {
-            writeMessage("Instrument flight only — visibility zero.");
+            writeMessage("Instrument flight only - visibility zero.");
             updateCoordinates(0, 1, 0);
         });
 
         weatherActions.put("SNOW", () -> {
-            writeMessage("Snowstorm incoming — adjusting altitude for safety.");
+            writeMessage("Snowstorm incoming - adjusting altitude for safety.");
             updateCoordinates(0, 0, -7);
         });
     }
