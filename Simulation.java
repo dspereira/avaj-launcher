@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -23,10 +24,14 @@ public class Simulation {
                 flyable.registerTower(tower);
                 tower.register(flyable);
             }
-           reader.close();
+            reader.close();
+            if (lineNumber == 1) {
+                lineNumber = 2;
+                throw new InvalidAircraftFormatException("Invalid parameters for creating an aircraft. Expected format: <type> <name> <longitude> <latitude> <height>.");
+            }
         }
         catch (IOException e) {
-            System.out.println("Error: Unable to read the scenario file.");
+            System.out.println("Error: " + e.getMessage());
             //e.printStackTrace();
         }
         catch (NumberFormatException e) {
@@ -43,6 +48,7 @@ public class Simulation {
         for (int i = 0; i < iterations; i++)
             tower.changeWeather();
     }
+
 
     private Flyable getNewAircraft(String line) throws InvalidAircraftFormatException {
         String[] words = line.split("\\s+");
