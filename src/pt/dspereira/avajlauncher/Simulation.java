@@ -13,6 +13,7 @@ import pt.dspereira.avajlauncher.tower.WeatherTower;
 public class Simulation {
     private int iterations;
     private WeatherTower tower;
+    private Boolean isSetupSuccessful = false;
 
     public Simulation() {
         tower = new WeatherTower();
@@ -37,6 +38,7 @@ public class Simulation {
             if (iterations < 1) {
                 throw new InvalidIterationsException("Invalid number of iterations: must be greater than zero.");
             }
+            isSetupSuccessful = true;
         }
         catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
@@ -55,6 +57,10 @@ public class Simulation {
     }
 
     public void start() {
+        if (!isSetupSuccessful) {
+            Logger.clean();
+            return ;
+        }
         for (int i = 0; i < iterations; i++)
             tower.changeWeather();
     }

@@ -10,5 +10,6 @@ public class Simulator {
         Simulation simulation = new Simulation();
         simulation.setup(args[0]);
         simulation.start();
+        Logger.close();
     }
 }
