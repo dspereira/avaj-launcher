@@ -1,3 +1,5 @@
+package pt.dspereira.avajlauncher;
+
 public class Coordinates {
     private int longitude;
     private int latitude;

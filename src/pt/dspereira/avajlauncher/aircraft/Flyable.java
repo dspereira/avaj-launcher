@@ -1,3 +1,7 @@
+package pt.dspereira.avajlauncher.aircraft;
+
+import pt.dspereira.avajlauncher.tower.WeatherTower;
+
 public abstract class Flyable {
     protected WeatherTower weatherTower;
 

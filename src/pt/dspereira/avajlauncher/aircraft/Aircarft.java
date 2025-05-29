@@ -1,3 +1,8 @@
+package pt.dspereira.avajlauncher.aircraft;
+
+import pt.dspereira.avajlauncher.Coordinates;
+import pt.dspereira.avajlauncher.Logger;
+
 public class Aircarft extends Flyable{
     protected long id;
     protected String name;
@@ -14,7 +19,7 @@ public class Aircarft extends Flyable{
     @Override
     public void updateConditions() {}
 
-    protected String getIdentification() {
+    public String getIdentification() {
         return type + "#" + name + "(" + id + ")";
     }
 

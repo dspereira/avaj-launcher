@@ -1,6 +1,13 @@
+package pt.dspereira.avajlauncher;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import pt.dspereira.avajlauncher.aircraft.AircraftFactory;
+import pt.dspereira.avajlauncher.aircraft.Flyable;
+import pt.dspereira.avajlauncher.exceptions.InvalidAircraftFormatException;
+import pt.dspereira.avajlauncher.tower.WeatherTower;
 
 public class Simulation {
     private int iterations;

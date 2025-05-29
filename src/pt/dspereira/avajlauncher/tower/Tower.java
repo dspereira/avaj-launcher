@@ -1,4 +1,11 @@
+package pt.dspereira.avajlauncher.tower;
+
 import java.util.List;
+
+import pt.dspereira.avajlauncher.Logger;
+import pt.dspereira.avajlauncher.aircraft.Aircarft;
+import pt.dspereira.avajlauncher.aircraft.Flyable;
+
 import java.util.ArrayList;
 
 class Tower {

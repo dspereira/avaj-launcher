@@ -1,4 +1,8 @@
+package pt.dspereira.avajlauncher.tower;
+
 import java.util.Random;
+
+import pt.dspereira.avajlauncher.Coordinates;
 
 public class WeatherProvider {
     private static WeatherProvider INSTANCE = null;

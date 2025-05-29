@@ -1,4 +1,8 @@
+package pt.dspereira.avajlauncher.aircraft;
+
 import java.util.HashMap;
+
+import pt.dspereira.avajlauncher.Coordinates;
 
 public class JetPlane extends Aircarft {
     private HashMap<String, Action> weatherActions;

@@ -1,3 +1,7 @@
+package pt.dspereira.avajlauncher.aircraft;
+
+import pt.dspereira.avajlauncher.Coordinates;
+
 public class AircraftFactory {
     private static AircraftFactory INSTANCE = null;
     private static long id = 0;
