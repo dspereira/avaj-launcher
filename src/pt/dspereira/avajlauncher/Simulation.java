@@ -81,8 +81,11 @@ public class Simulation {
             longitude = Integer.parseInt(words[2]);
             latitude = Integer.parseInt(words[3]);
             height = Integer.parseInt(words[4]);
-            if (longitude < 0 || latitude < 0 || height < 0)
-                throw new InvalidAircraftFormatException("Invalid coordinates.");
+            if (longitude < 0 || latitude < 0)
+                throw new InvalidAircraftFormatException("Invalid coordinates: both longitude and latitude must be non-negative values.");
+            if (height < 1 || height > 100)
+                throw new InvalidAircraftFormatException("Invalid height: must be between 1 and 100.");
+            
         }
         catch (NumberFormatException e) {
             throw new InvalidAircraftFormatException("Invalid coordinates.");

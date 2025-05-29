@@ -8,7 +8,7 @@ public class Coordinates {
     Coordinates(int longitude, int latitude, int height) {
         this.longitude = longitude;
         this.latitude = latitude;
-        this.height = height;
+        this.height = clamp(height);
     }
 
     public int getLongitude() {
@@ -33,8 +33,14 @@ public class Coordinates {
 
     public void updateHeight(int height) {
         this.height += height;
-        if (this.height < 0) {
-            this.height = 0;
-        }
+        this.height = clamp(this.height);
+    }
+
+    private int clamp(int value) {
+        if (value < 0)
+            value = 0;
+        else if (value > 100)
+            value = 100;
+        return value;
     }
 }
