@@ -7,6 +7,7 @@ import java.io.IOException;
 import pt.dspereira.avajlauncher.aircraft.AircraftFactory;
 import pt.dspereira.avajlauncher.aircraft.Flyable;
 import pt.dspereira.avajlauncher.exceptions.InvalidAircraftFormatException;
+import pt.dspereira.avajlauncher.exceptions.InvalidIterationsException;
 import pt.dspereira.avajlauncher.tower.WeatherTower;
 
 public class Simulation {
@@ -19,9 +20,8 @@ public class Simulation {
 
     public void setup(String setupFilename) {
         int lineNumber = 1;
-        try {
+        try(BufferedReader reader = new BufferedReader(new FileReader(setupFilename))) {
             Flyable flyable;
-            BufferedReader reader = new BufferedReader(new FileReader(setupFilename));
             iterations = Integer.parseInt(reader.readLine());
             String line;
             while ((line = reader.readLine()) != null) {
@@ -30,10 +30,12 @@ public class Simulation {
                 flyable.registerTower(tower);
                 tower.register(flyable);
             }
-            reader.close();
             if (lineNumber == 1) {
                 lineNumber = 2;
                 throw new InvalidAircraftFormatException("Invalid parameters for creating an aircraft. Expected format: <type> <name> <longitude> <latitude> <height>.");
+            }
+            if (iterations < 1) {
+                throw new InvalidIterationsException("Invalid number of iterations: must be greater than zero.");
             }
         }
         catch (IOException e) {
@@ -45,8 +47,10 @@ public class Simulation {
             //e.printStackTrace();
         }
         catch (InvalidAircraftFormatException e) {
-            //System.out.println("Error: Invalid parameters for creating an aircraft.");
             System.out.println("Error on line " + lineNumber + ": " + e.getMessage());
+        }
+        catch (InvalidIterationsException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
